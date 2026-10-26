@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신유철 · 포트폴리오</title>
+<meta name="description" content="데이터와 AI로 문제를 정의하고 실행으로 연결합니다. 데이터 분석 · 운영 실행 · AI 서비스">
+<meta property="og:title" content="신유철 · 포트폴리오">
+<meta property="og:description" content="데이터와 AI로 문제를 정의하고 실행으로 연결합니다">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://youuuchul.github.io/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f7f3ee; --card:#fffdfa; --ink:#351e28; --ink-2:#351e28b3; --line:#351e2824;
+  --accent:#ff5c34; --rust:#924b12;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;word-break:keep-all;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:72px 16px 96px}
+.role{font-size:14px;font-weight:600;color:var(--rust);letter-spacing:.02em;margin:0 0 12px}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.25;margin:0 0 8px;font-weight:800;text-wrap:balance}
+.name{font-size:18px;font-weight:600;margin:0 0 40px;color:var(--ink-2)}
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:56px}
+.doc{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px;border-radius:14px;text-decoration:none;font-weight:700;font-size:18px;color:var(--ink);background:var(--card);border:1px solid var(--line);transition:transform .15s ease,border-color .15s ease}
+.doc.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.doc small{font-size:13px;font-weight:600;opacity:.75}
+.doc:hover{transform:translateY(-2px);border-color:var(--ink)}
+.doc.primary:hover{border-color:var(--accent)}
+h2{font-size:13px;font-weight:700;color:var(--rust);letter-spacing:.06em;margin:0 0 12px}
+ul{list-style:none;margin:0 0 48px;padding:0;border-top:1px solid var(--line)}
+li a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+li strong{font-size:17px}
+li span{grid-column:1;font-size:14px;color:var(--ink-2)}
+li em{grid-column:2;grid-row:1/3;align-self:center;font-style:normal;font-size:13px;color:var(--ink-2);overflow-wrap:anywhere}
+li a:hover strong{text-decoration:underline;text-underline-offset:3px}
+.contact a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+.contact{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+@media (max-width:560px){li a{grid-template-columns:minmax(0,1fr)}li em{grid-column:1;grid-row:auto}}
+@media (prefers-reduced-motion:reduce){.doc{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <p class="role">데이터 분석 · 운영 실행 · AI 서비스</p>
+  <h1>데이터와 AI로 문제를 정의하고 실행으로 연결합니다</h1>
+  <p class="name">신유철</p>
+
+  <div class="docs">
+    <a class="doc primary" href="portfolio.pdf">포트폴리오 <small>PDF</small></a>
+    <a class="doc" href="resume.pdf">이력서 <small>PDF</small></a>
+  </div>
+
+  <h2>SERVICES</h2>
+  <ul>
+    <li><a href="https://petglobe.app"><strong>PetGlobe</strong><span>반려동물 돌봄 기록과 기억하는 AI 컴패니언</span><em>petglobe.app</em></a></li>
+    <li><a href="https://www.hearttable.shop"><strong>HeartTable</strong><span>AI 캐릭터 로테이션 소개팅</span><em>hearttable.shop</em></a></li>
+    <li><a href="https://murdermysterygenerator.shop"><strong>Murder Mystery Generator</strong><span>AI와 만들고 AI와 플레이하는 추리 게임</span><em>murdermysterygenerator.shop</em></a></li>
+    <li><a href="https://placewave-analytics.vercel.app"><strong>Placewave</strong><span>비즈니스 데이터 파이프라인·대시보드 샘플</span><em>placewave-analytics.vercel.app</em></a></li>
+  </ul>
+
+  <h2>CONTACT</h2>
+  <p class="contact"><a href="mailto:dbcjf25@gmail.com">dbcjf25@gmail.com</a><a href="https://github.com/youuuchul">github.com/youuuchul</a></p>
+</main>
+</body>
+</html>
