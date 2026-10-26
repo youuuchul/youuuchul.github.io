@@ -22,17 +22,26 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: 사이트와 Release PDF 모으기
+        with:
+          repository: youuuchul/portfolio-site
+          ref: main
+          ssh-key: ${{ secrets.PORTFOLIO_SITE_DEPLOY_KEY }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Release PDF 붙이기
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p _site
-          cp index.html _site/
-          gh release download pdf -R "$GITHUB_REPOSITORY" -p '*.pdf' -D _site || echo "Release PDF 없음"
-          ls -la _site
+          rm -f dist/portfolio_public.pdf
+          gh release download pdf -R "$GITHUB_REPOSITORY" -p '*.pdf' -D dist || echo "Release PDF 없음"
+          ls -la dist
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
