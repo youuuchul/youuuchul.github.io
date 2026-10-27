@@ -50,6 +50,7 @@ jobs:
           test -n "$key"
           mkdir -p "dist/$key"
           gh release download resume -R youuuchul/portfolio-site -p resume.pdf -D "dist/$key"
+          cp tools/resume_download.html "dist/$key/index.html"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
