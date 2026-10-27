@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: pages
@@ -26,6 +27,8 @@ jobs:
           repository: youuuchul/portfolio-site
           ref: main
           ssh-key: ${{ secrets.PORTFOLIO_SITE_DEPLOY_KEY }}
+      - name: 이력서 경로 로그에서 가리기
+        run: echo "::add-mask::$(cat tools/resume_key.txt)"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -39,9 +42,24 @@ jobs:
           rm -f dist/portfolio_public.pdf
           gh release download pdf -R "$GITHUB_REPOSITORY" -p '*.pdf' -D dist || echo "Release PDF 없음"
           ls -la dist
+      - name: 이력서 붙이기 (portfolio-site 비공개 Release)
+        env:
+          GH_TOKEN: ${{ secrets.PORTFOLIO_SITE_TOKEN }}
+        run: |
+          key=$(cat tools/resume_key.txt)
+          test -n "$key"
+          mkdir -p "dist/$key"
+          gh release download resume -R youuuchul/portfolio-site -p resume.pdf -D "dist/$key"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: 배포 묶음 삭제 (공개 레포라 누구나 받을 수 있음)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '.artifacts[].id' \
+            | xargs -r -I{} gh api -X DELETE "repos/$GITHUB_REPOSITORY/actions/artifacts/{}"
